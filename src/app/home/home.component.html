@@ -1,1 +1,17 @@
-<p>home works! OK</p>
+<div>
+  <select name="tiposVeiculo" [(ngModel)]="inputTipoVeiculo" (click)="buscarMarcas(inputTipoVeiculo)">
+    <option value="carros">Carros</option>
+    <option value="caminhoes">Caminhões</option>
+    <option value="motos">Motos</option>
+  </select>
+
+  <select name="marcas" [(ngModel)]="inputMarca" (click)="buscarModelos(inputMarca)">
+    <option *ngFor="let marca of marcas" [value]="inputMarca + marca.codigo">{{marca.nome}}</option>
+  </select>
+
+  <select name="modelos">
+    <option *ngFor="let modelo of modelos" [value]="modelo.codigo">{{modelo.nome}}</option>
+  </select>
+
+
+</div>
