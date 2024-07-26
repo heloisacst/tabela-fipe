@@ -10,11 +10,10 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnDestroy{
   inputTipoVeiculo: any;
-  inputMarca: any = "Acura";
-  marcas: any[] | null = [];
-  modelos: any[] | null= [];
-  cars: any[] = [];
-  nome: string = '';
+  inputMarca: any;
+  inputSubModel: any;
+  marcaList: any[] | null = [];
+  modeloList: any[] | null = [];
   codigo: string | undefined;
 
   listar: boolean = false;
@@ -24,28 +23,23 @@ export class HomeComponent implements OnDestroy{
 
   buscarMarcas(tipoVeiculo: string) {
     this.subscription = this.fipeService.getMarcas(tipoVeiculo).subscribe((data: any[]) => {
-    this.marcas = data;
+    this.marcaList = data;
     });
   }
 
-  /*buscarModelos(marca: string) {
+  buscarModelos(marca: string) {
     this.subscription = this.fipeService.getModelos(marca).subscribe((data: any[] | null) => {
-      this.modelos = data;
-    });
-    console.log(marca);
-  }*/
-
-  buscarModelos(nome: string): string | undefined {
-    const car = this.cars.find(car => car.nome === nome);
-    return car ? car.codigo : undefined;
+      console.log(data);
+      this.modeloList = data || [];
+      });
   }
 
-  buscarCodigo() {
-    this.codigo = this.buscarModelos(this.nome);
-  }
-
-  listaCarros() {
-    return this.listar;
+  buscarSubModelos(subModel: string) {
+    let url = this.fipeService.getUrl();
+    console.log('buscarSubModelos=', url)
+    this.subscription = this.fipeService.getSubModel(url, subModel).subscribe((data: any[] | null) => {
+      console.log(data);
+      });
   }
 
   ngOnDestroy() {

@@ -10,6 +10,7 @@ export class TipoVeiculoService{
 
   private baseUrl = 'https://parallelum.com.br/fipe/api/v1/';
   private url: string = '';
+  private urlModelo: string = '';
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +19,7 @@ export class TipoVeiculoService{
     return this.http.get<any[]>(this.url);
   }
 
-  /*getModelos(marca: string): Observable<any[] | null> {
+  getModelos(marca: string): Observable<any[] | null> {
     return this.http.get<any[]>(this.url).pipe(
       switchMap(marcas => {
         if (marcas.length === 0) {
@@ -27,23 +28,42 @@ export class TipoVeiculoService{
         }
 
         // Encontre a marca pelo nome
-        const marcaEncontrada = marcas.find(data => data.nome === marca);
+        //const marcaEncontrada = marcas.find(data => data.nome === marca);
 
-        // Verifique se a marca foi encontrada
-        if (!marcaEncontrada) {
+        let marcaEncontrada = {codigo: 1, nome: "Acura"}
+
+        /*if (!marcaEncontrada) {
           console.error(`A marca "${marca}" não foi encontrada.`);
+          return of(null);
+        }*/
+
+        const codigoMarca = marcaEncontrada.codigo;
+        this.urlModelo = `${this.url}/${codigoMarca}/modelos`;
+        console.log('getModelos=', this.urlModelo);
+        return this.http.get<any[]>(this.urlModelo);
+      })
+    );
+  }
+
+  getSubModel(urlMarca: string, subModel: string): Observable<any[] | null> {
+    return this.http.get<any[]>(urlMarca).pipe(
+      switchMap(subModel => {
+        if (subModel.length === 0) {
+          console.error("O array de marcas está vazio.");
           return of(null);
         }
 
-        // A marca foi encontrada, obtenha o código e faça a solicitação HTTP para os modelos
-        const codigoMarca = marcaEncontrada.codigo;
-        const url = `${this.url}/${codigoMarca}/modelos/`;
+        //let subModelEncontrado = {codigo: 1}
+
+        const codigoModelo = 1; //subModelEncontrado.codigo;
+        const url = `${urlMarca}/${codigoModelo}/anos/`;
+        console.log(url);
         return this.http.get<any[]>(url);
       })
     );
-  }*/
+  }
 
-  getModelos(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+  getUrl(): any{
+    return this.urlModelo;
   }
 }
