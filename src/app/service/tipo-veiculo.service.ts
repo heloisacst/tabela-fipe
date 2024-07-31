@@ -32,7 +32,7 @@ export class TipoVeiculoService{
 
   getSubModel(modelo: string): Observable<any> {
     this.urlSubModelo = `${this.urlModelo}/${modelo}/anos`;
-    return this.http.get<any>(this.urlModelo).pipe(
+    return this.http.get<any>(this.urlSubModelo).pipe(
       catchError(error => {
         console.error("Erro ao buscar subModelos:", error);
         return of({ });
@@ -40,7 +40,4 @@ export class TipoVeiculoService{
     );
   }
 
-  getUrl(): any{
-    return this.urlModelo;
-  }
 }

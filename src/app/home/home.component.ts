@@ -34,14 +34,11 @@ export class HomeComponent implements OnInit {
       } else {
         this.modeloList = [];
       }
-      console.log(this.modeloList);
     });
   }
 
   buscarSubModelos(modelo: string) {
-    console.log(modelo);
-    this.subscription = this.fipeService.getSubModel(modelo).subscribe((data: any[]) => {
-      console.log(data);
+    this.subscription = this.fipeService.getSubModel(modelo).subscribe((data: any) => {
       this.subModeloList = data;
       });
   }

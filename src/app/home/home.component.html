@@ -13,4 +13,8 @@
     <option *ngFor="let modelo of modeloList" [ngValue]="modelo.codigo">{{modelo.nome}}</option>
   </select>
 
+  <select name="ano">
+    <option *ngFor="let subModelo of subModeloList" [ngValue]="subModelo.codigo">{{subModelo.nome}}</option>
+  </select>
+
 </div>
