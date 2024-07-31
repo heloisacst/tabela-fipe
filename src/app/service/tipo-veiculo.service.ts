@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators'; // Importe o operador map aqui
+import { map, switchMap, catchError} from 'rxjs/operators'; // Importe o operador map aqui
 
 @Injectable({
   providedIn: 'root'
@@ -19,38 +19,22 @@ export class TipoVeiculoService{
     return this.http.get<any[]>(this.url);
   }
 
-  getModelos(marca: string): Observable<any[] | null> {
-    return this.http.get<any[]>(this.url).pipe(
-      switchMap(marcas => {
-        if (marcas.length === 0) {
-          console.error("O array de marcas está vazio.");
-          return of(null);
-        }
-
-        // Encontre a marca pelo nome
-        //const marcaEncontrada = marcas.find(data => data.nome === marca);
-
-        let marcaEncontrada = {codigo: 1, nome: "Acura"}
-
-        /*if (!marcaEncontrada) {
-          console.error(`A marca "${marca}" não foi encontrada.`);
-          return of(null);
-        }*/
-
-        const codigoMarca = marcaEncontrada.codigo;
-        this.urlModelo = `${this.url}/${codigoMarca}/modelos`;
-        console.log('getModelos=', this.urlModelo);
-        return this.http.get<any[]>(this.urlModelo);
+  getModelos(modelo: string): Observable<any> {
+    this.urlModelo = `${this.url}/${modelo}/modelos`;
+    return this.http.get<any>(this.urlModelo).pipe(
+      catchError(error => {
+        console.error("Erro ao buscar modelos:", error);
+        return of({ modelos: [], anos: [] });
       })
     );
   }
 
-  getSubModel(urlMarca: string, subModel: string): Observable<any[] | null> {
+  getSubModel(urlMarca: string, subModel: string): Observable<any[]> {
     return this.http.get<any[]>(urlMarca).pipe(
       switchMap(subModel => {
         if (subModel.length === 0) {
-          console.error("O array de marcas está vazio.");
-          return of(null);
+          console.error("O array de modelos está vazio.");
+          return of([]);
         }
 
         //let subModelEncontrado = {codigo: 1}
@@ -59,6 +43,10 @@ export class TipoVeiculoService{
         const url = `${urlMarca}/${codigoModelo}/anos/`;
         console.log(url);
         return this.http.get<any[]>(url);
+      }),
+      catchError(error => {
+        console.error("Erro ao buscar modelos:", error);
+        return of([]);
       })
     );
   }

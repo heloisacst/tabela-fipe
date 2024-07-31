@@ -1,17 +1,16 @@
 <div>
-  <select name="tiposVeiculo" [(ngModel)]="inputTipoVeiculo" (click)="buscarMarcas(inputTipoVeiculo)">
+  <select name="tiposVeiculo" [(ngModel)]="inputTipoVeiculo" (change)="buscarMarcas(inputTipoVeiculo)">
     <option value="carros">Carros</option>
     <option value="caminhoes">Caminhões</option>
     <option value="motos">Motos</option>
   </select>
 
-  <select name="marcas" [(ngModel)]="inputMarca" (click)="buscarModelos(inputMarca)">
-   <!-- <option *ngFor="let marca of marcas" [value]="inputMarca + marca.codigo">{{marca.nome}}</option>-->
-   <option *ngFor="let marca of marcaList">{{marca.nome}}</option>
+  <select name="marcas" [(ngModel)]="inputMarca" (change)="buscarModelos(inputMarca)">
+   <option *ngFor="let marca of marcaList" [ngValue]="marca.codigo">{{marca.nome}}</option>
   </select>
 
-  <select name="modelos" [(ngModel)] = "inputSubModel" (click)="buscarSubModelos(inputSubModel)">
+  <!--<select name="modelos" [(ngModel)] = "inputSubModel" (click)="buscarSubModelos(inputSubModel)">
     <option *ngFor="let modelo of modeloList">{{modelo.nome}}</option>
-  </select>
+  </select>-->
 
 </div>
