@@ -9,8 +9,8 @@
    <option *ngFor="let marca of marcaList" [ngValue]="marca.codigo">{{marca.nome}}</option>
   </select>
 
-  <!--<select name="modelos" [(ngModel)] = "inputSubModel" (click)="buscarSubModelos(inputSubModel)">
-    <option *ngFor="let modelo of modeloList">{{modelo.nome}}</option>
-  </select>-->
+  <select name="modelos" [(ngModel)]= "inputSubModel" (change)="buscarSubModelos(inputSubModel)">
+    <option *ngFor="let modelo of modeloList" [ngValue]="modelo.codigo">{{modelo.nome}}</option>
+  </select>
 
 </div>

@@ -11,6 +11,7 @@ export class TipoVeiculoService{
   private baseUrl = 'https://parallelum.com.br/fipe/api/v1/';
   private url: string = '';
   private urlModelo: string = '';
+  private urlSubModelo: string = '';
 
   constructor(private http: HttpClient) {}
 
@@ -19,8 +20,8 @@ export class TipoVeiculoService{
     return this.http.get<any[]>(this.url);
   }
 
-  getModelos(modelo: string): Observable<any> {
-    this.urlModelo = `${this.url}/${modelo}/modelos`;
+  getModelos(marca: string): Observable<any> {
+    this.urlModelo = `${this.url}/${marca}/modelos`;
     return this.http.get<any>(this.urlModelo).pipe(
       catchError(error => {
         console.error("Erro ao buscar modelos:", error);
@@ -29,24 +30,12 @@ export class TipoVeiculoService{
     );
   }
 
-  getSubModel(urlMarca: string, subModel: string): Observable<any[]> {
-    return this.http.get<any[]>(urlMarca).pipe(
-      switchMap(subModel => {
-        if (subModel.length === 0) {
-          console.error("O array de modelos está vazio.");
-          return of([]);
-        }
-
-        //let subModelEncontrado = {codigo: 1}
-
-        const codigoModelo = 1; //subModelEncontrado.codigo;
-        const url = `${urlMarca}/${codigoModelo}/anos/`;
-        console.log(url);
-        return this.http.get<any[]>(url);
-      }),
+  getSubModel(modelo: string): Observable<any> {
+    this.urlSubModelo = `${this.urlModelo}/${modelo}/anos`;
+    return this.http.get<any>(this.urlModelo).pipe(
       catchError(error => {
-        console.error("Erro ao buscar modelos:", error);
-        return of([]);
+        console.error("Erro ao buscar subModelos:", error);
+        return of({ });
       })
     );
   }

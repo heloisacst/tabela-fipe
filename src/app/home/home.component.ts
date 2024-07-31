@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TipoVeiculoService } from '../service/tipo-veiculo.service';
-import { OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,6 +14,7 @@ export class HomeComponent implements OnInit {
   inputSubModel: any;
   marcaList: any[] | null = [];
   modeloList: any[] | null = [];
+  subModeloList: any[] | null = [];
   httpClient = inject(HttpClient);
   subscription: Subscription | undefined;
   data: any[] = [];
@@ -23,40 +23,28 @@ export class HomeComponent implements OnInit {
 
   buscarMarcas(tipoVeiculo: string) {
     this.subscription = this.fipeService.getMarcas(tipoVeiculo).subscribe((data: any[]) => {
-    console.log(data);
     this.marcaList = data;
     });
   }
 
-  buscarModelos(modelo: string) {
-    this.subscription = this.fipeService.getModelos(modelo).subscribe((data: any[]) => {
-      console.log(modelo);
-      console.log(data);
-      this.data = data;
+  buscarModelos(marca: string) {
+    this.subscription = this.fipeService.getModelos(marca).subscribe((data: any) => {
+      if (data && data.modelos) {
+        this.modeloList = data.modelos;
+      } else {
+        this.modeloList = [];
+      }
+      console.log(this.modeloList);
     });
+  }
+
+  buscarSubModelos(modelo: string) {
+    console.log(modelo);
+    this.subscription = this.fipeService.getSubModel(modelo).subscribe((data: any[]) => {
+      console.log(data);
+      this.subModeloList = data;
+      });
   }
 
   ngOnInit(): void {}
 }
-/*export class HomeComponent implements OnDestroy{
-  codigo: string | undefined;
-  listar: boolean = false;
-  subscription: Subscription | undefined;
-
-
-  buscarSubModelos(subModel: string) {
-    let url = this.fipeService.getUrl();
-    console.log('buscarSubModelos=', url)
-    this.subscription = this.fipeService.getSubModel(url, subModel).subscribe((data: any[] | null) => {
-      console.log(data);
-      });
-  }
-
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
-
-}
-*/
