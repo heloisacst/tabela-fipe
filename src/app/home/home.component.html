@@ -13,8 +13,29 @@
     <option *ngFor="let modelo of modeloList" [ngValue]="modelo.codigo">{{modelo.nome}}</option>
   </select>
 
-  <select name="ano">
+  <select name="ano" [(ngModel)]="inputAno" (change)="buscarDadosVeiculo(inputAno)">
     <option *ngFor="let subModelo of subModeloList" [ngValue]="subModelo.codigo">{{subModelo.nome}}</option>
   </select>
+
+  <table>
+    <tr>
+      <th>Valor</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Ano</th>
+      <th>Combustível</th>
+      <th>Código FIPE</th>
+      <th>Mês Referência</th>
+    </tr>
+    <tr *ngIf="dadosVeiculo">
+      <td>{{dadosVeiculo.Valor}}</td>
+      <td>{{dadosVeiculo.Marca}}</td>
+      <td>{{dadosVeiculo.Modelo}}</td>
+      <td>{{dadosVeiculo.AnoModelo}}</td>
+      <td>{{dadosVeiculo.Combustivel}}</td>
+      <td>{{dadosVeiculo.CodigoFipe}}</td>
+      <td>{{dadosVeiculo.MesReferencia}}</td>
+    </tr>
+  </table>
 
 </div>

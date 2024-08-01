@@ -12,6 +12,7 @@ export class TipoVeiculoService{
   private url: string = '';
   private urlModelo: string = '';
   private urlSubModelo: string = '';
+  private urlDadosVeiculo: string = '';
 
   constructor(private http: HttpClient) {}
 
@@ -40,4 +41,14 @@ export class TipoVeiculoService{
     );
   }
 
+  getDadosVeiculo(ano: string): Observable<any> {
+    this.urlDadosVeiculo = `${this.urlSubModelo}/${ano}`;
+    return this.http.get<any>(this.urlDadosVeiculo).pipe(
+      catchError(error => {
+        console.error("Erro ao buscar dados do veículo:", error);
+        return of ({});
+        })
+    );
+  }
 }
+

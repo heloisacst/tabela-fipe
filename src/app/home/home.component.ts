@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { TipoVeiculoService } from '../service/tipo-veiculo.service';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { DadosVeiculo } from '../models/dados-veiculo.model';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,13 @@ export class HomeComponent implements OnInit {
   inputTipoVeiculo: any;
   inputMarca: any;
   inputSubModel: any;
+  inputAno: any;
+
   marcaList: any[] | null = [];
   modeloList: any[] | null = [];
   subModeloList: any[] | null = [];
+  dadosVeiculo: DadosVeiculo | null = null;
+
   httpClient = inject(HttpClient);
   subscription: Subscription | undefined;
   data: any[] = [];
@@ -41,6 +46,13 @@ export class HomeComponent implements OnInit {
     this.subscription = this.fipeService.getSubModel(modelo).subscribe((data: any) => {
       this.subModeloList = data;
       });
+  }
+
+  buscarDadosVeiculo(ano: string) {
+    this.subscription = this.fipeService.getDadosVeiculo(ano).subscribe((data: any) => {
+      console.log(data);
+      this.dadosVeiculo = data;
+    });
   }
 
   ngOnInit(): void {}
