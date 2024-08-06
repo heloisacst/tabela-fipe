@@ -1,0 +1,11 @@
+.navbar.navbar-dark.bg-dark {
+  padding: 1.5rem;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.596); /* Sombreamento */
+}
+.menu {
+  margin-right: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
