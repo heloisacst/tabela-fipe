@@ -1,23 +1,25 @@
 <div>
-  <select class="form-select" name="tiposVeiculo" [(ngModel)]="inputTipoVeiculo" (change)="buscarMarcas(inputTipoVeiculo)">
-    <option value="carros">Carros</option>
-    <option value="caminhoes">Caminhões</option>
-    <option value="motos">Motos</option>
-  </select>
+  <div class="selects">
+    <select class="form-select" name="tiposVeiculo" [(ngModel)]="inputTipoVeiculo" (change)="buscarMarcas(inputTipoVeiculo)">
+      <option value="carros">Carros</option>
+      <option value="caminhoes">Caminhões</option>
+      <option value="motos">Motos</option>
+    </select>
 
-  <select class="form-select" name="marcas" [(ngModel)]="inputMarca" (change)="buscarModelos(inputMarca)">
-   <option *ngFor="let marca of marcaList" [ngValue]="marca.codigo">{{marca.nome}}</option>
-  </select>
+    <select class="form-select" name="marcas" [(ngModel)]="inputMarca" (change)="buscarModelos(inputMarca)">
+    <option *ngFor="let marca of marcaList" [ngValue]="marca.codigo">{{marca.nome}}</option>
+    </select>
 
-  <select class="form-select" name="modelos" [(ngModel)]= "inputSubModel" (change)="buscarSubModelos(inputSubModel)">
-    <option *ngFor="let modelo of modeloList" [ngValue]="modelo.codigo">{{modelo.nome}}</option>
-  </select>
+    <select class="form-select" name="modelos" [(ngModel)]= "inputSubModel" (change)="buscarSubModelos(inputSubModel)">
+      <option *ngFor="let modelo of modeloList" [ngValue]="modelo.codigo">{{modelo.nome}}</option>
+    </select>
 
-  <select class="form-select" name="ano" [(ngModel)]="inputAno" (change)="buscarDadosVeiculo(inputAno)">
-    <option *ngFor="let subModelo of subModeloList" [ngValue]="subModelo.codigo">{{subModelo.nome}}</option>
-  </select>
+    <select class="form-select" name="ano" [(ngModel)]="inputAno" (change)="buscarDadosVeiculo(inputAno)">
+      <option *ngFor="let subModelo of subModeloList" [ngValue]="subModelo.codigo">{{subModelo.nome}}</option>
+    </select>
+  </div>
 
-  <table class="table table-striped">
+  <table class="table table-striped" *ngIf="dadosVeiculo">
     <thead>
       <tr>
         <th>Valor</th>
