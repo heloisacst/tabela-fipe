@@ -1,8 +1,16 @@
 .form-select {
   width: 20%;
   margin: 1rem;
+  background-color: black;
+  color: white;
+}
+
+option:hover {
+  background-color: #00ADB5;
 }
 
 .selects {
   display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }

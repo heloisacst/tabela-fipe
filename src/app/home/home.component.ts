@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   subModeloList: any[] | null = [];
   dadosVeiculo: DadosVeiculo | null = null;
 
+  isDisabled = true;
+
   httpClient = inject(HttpClient);
   subscription: Subscription | undefined;
   data: any[] = [];
@@ -54,6 +56,12 @@ export class HomeComponent implements OnInit {
       this.dadosVeiculo = data;
     });
   }
+
+  /*toggleDisabled() {
+    if(this.marcaList) {
+      this.isDisabled = !this.isDisabled;
+    }
+  }*/
 
   ngOnInit(): void {}
 }

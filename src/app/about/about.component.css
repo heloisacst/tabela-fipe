@@ -1,0 +1,28 @@
+#about-info {
+  display: flex;
+  justify-content: center;
+}
+
+.about {
+  display: flex;
+  width: 40%;
+  background-color: #222831;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.2rem;
+  border-radius: 3%;
+  margin-top: 1rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+p {
+  text-align: justify;
+  font-size: 1.1rem;
+}
+
+a {
+  text-decoration: none;
+}
