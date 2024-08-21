@@ -27,3 +27,26 @@ label {
 .label-1 {
   margin-left: 1rem;
 }
+
+table {
+  width: 100%;
+  margin-top: 2rem;
+  table-layout: fixed;
+  margin-top: 2rem;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid #2e3a47;
+  color: white;
+}
+
+th {
+  background-color: #222831;
+}
+
+td {
+  background-color: #4d5a6e;
+}
