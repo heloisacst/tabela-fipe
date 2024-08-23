@@ -29,12 +29,19 @@ export class HomeComponent implements OnInit {
   constructor(private fipeService: TipoVeiculoService) {}
 
   buscarMarcas(tipoVeiculo: string) {
+    this.marcaList = null;
+    this.modeloList = null;
+    this.subModeloList = null;
+
     this.subscription = this.fipeService.getMarcas(tipoVeiculo).subscribe((data: any[]) => {
     this.marcaList = data;
     });
   }
 
   buscarModelos(marca: string) {
+    this.modeloList = null;
+    this.subModeloList = null;
+
     this.subscription = this.fipeService.getModelos(marca).subscribe((data: any) => {
       if (data && data.modelos) {
         this.modeloList = data.modelos;
@@ -45,6 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   buscarSubModelos(modelo: string) {
+    this.inputAno = null;
     this.subscription = this.fipeService.getSubModel(modelo).subscribe((data: any) => {
       this.subModeloList = data;
       });
@@ -56,12 +64,6 @@ export class HomeComponent implements OnInit {
       this.dadosVeiculo = data;
     });
   }
-
-  /*toggleDisabled() {
-    if(this.marcaList) {
-      this.isDisabled = !this.isDisabled;
-    }
-  }*/
 
   ngOnInit(): void {}
 }
