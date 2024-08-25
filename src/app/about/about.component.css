@@ -27,6 +27,17 @@ a {
   text-decoration: none;
 }
 
+@media(min-width:769px) AND (max-width: 1024px) {
+  #about-info {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about {
+    width: 90%;
+  }
+}
+
 @media(max-width: 768px) {
   .about {
     width: 80%;

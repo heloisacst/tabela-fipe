@@ -51,7 +51,7 @@ td {
   background-color: #4d5a6e;
 }
 
-@media(max-width: 768px) {
+@media(max-width: 1024px) {
   .selects {
     margin-left: 0.5rem;
     width: 100%;
