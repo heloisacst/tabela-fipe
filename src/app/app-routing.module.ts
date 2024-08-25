@@ -12,7 +12,7 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Home'
+    title: 'Consultar Fipe'
   }
 ];
 

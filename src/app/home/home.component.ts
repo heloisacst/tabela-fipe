@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { TipoVeiculoService } from '../service/tipo-veiculo.service';
+import { BuscaApiService } from '../service/busca-api.service';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { DadosVeiculo } from '../models/dados-veiculo.model';
@@ -20,13 +20,11 @@ export class HomeComponent implements OnInit {
   subModeloList: any[] | null = [];
   dadosVeiculo: DadosVeiculo | null = null;
 
-  isDisabled = true;
-
   httpClient = inject(HttpClient);
   subscription: Subscription | undefined;
   data: any[] = [];
 
-  constructor(private fipeService: TipoVeiculoService) {}
+  constructor(private fipeService: BuscaApiService) {}
 
   buscarMarcas(tipoVeiculo: string) {
     this.marcaList = null;

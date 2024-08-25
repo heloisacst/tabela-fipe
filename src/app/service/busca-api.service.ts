@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, switchMap, catchError} from 'rxjs/operators'; // Importe o operador map aqui
+import { catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TipoVeiculoService{
+export class BuscaApiService{
 
   private baseUrl = 'https://parallelum.com.br/fipe/api/v1/';
   private url: string = '';
