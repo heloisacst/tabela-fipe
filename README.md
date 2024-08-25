@@ -1,27 +1,42 @@
-# Fipe
+# Consultar Fipe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+Este é um projeto desenvolvido em Angular 17 (17.2.0) que consulta uma API pública para buscar informações sobre veículos com base na Tabela FIPE. O projeto utiliza o Bootstrap para estilização e responsividade.
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Consulta FIPE: Permite buscar informações detalhadas sobre veículos usando a API pública da FIPE.
+- Interface Responsiva: A interface é projetada para funcionar em diferentes dispositivos.
+- Pesquisa por Marca, Modelo e Ano/Combustível: Você pode procurar veículos filtrando por marca, modelo e ano de fabricação.
 
-## Code scaffolding
+## Tecnologias Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular: Framework front-end para desenvolvimento de aplicativos web.
+- Bootstrap: Framework de CSS para estilização e design responsivo.
+- API Pública da FIPE: Fonte de dados para informações sobre veículos (https://deividfortuna.github.io/fipe/).
 
-## Build
+## Como rodar o projeto?
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para rodar este projeto localmente, siga estes passos:
 
-## Running unit tests
+1. Clone o repositório: `git clone https://github.com/heloisacst/tabela-fipe.git`
+2. Instale as dependências: `npm install` e `npm install bootstrap`
+3. Adicione o Bootstrap ao projeto: No arquivo angular.json, adicione o seguinte ao array "styles":
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`
+"styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+]
+`
 
-## Running end-to-end tests
+4. Inicie o servidor de desenvolvimento: `ng serve`
+5. Acesse o aplicativo no navegador: `http://localhost:4200`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Uso
 
-## Further help
+1. Busque por um veículo: Utilize os campos de pesquisa para inserir o tipo de veículo, marca, modelo e ano/combustível desejados.
+2. Veja os resultados: A consulta será feita à API da FIPE e os resultados serão exibidos em uma tabela.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Contato
+
+Para qualquer dúvida ou sugestão, entre em contato com heloisa.cstp@gmail.com
