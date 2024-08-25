@@ -26,3 +26,9 @@ p {
 a {
   text-decoration: none;
 }
+
+@media(max-width: 768px) {
+  .about {
+    width: 80%;
+  }
+}

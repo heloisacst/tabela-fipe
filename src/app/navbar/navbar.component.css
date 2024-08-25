@@ -19,3 +19,13 @@
 img {
   height: 2rem;
 }
+
+@media (max-width: 768px) {
+  /*smartphones */
+  .navbar.navbar-dark.bg-dark {
+    width: 100%;
+    padding: 1rem;
+  }
+
+}
+

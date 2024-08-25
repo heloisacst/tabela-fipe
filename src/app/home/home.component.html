@@ -26,7 +26,7 @@
   </div>
 
   <table class="table table-striped" *ngIf="dadosVeiculo">
-  <!--<table class="table table-striped">-->
+  <!--<table class="table table-striped responsive-table">-->
     <thead>
       <tr>
         <th>Valor</th>
@@ -40,13 +40,13 @@
     </thead>
     <tbody>
       <tr *ngIf="dadosVeiculo">
-        <td>{{dadosVeiculo.Valor}}</td>
-        <td>{{dadosVeiculo.Marca}}</td>
-        <td>{{dadosVeiculo.Modelo}}</td>
-        <td>{{dadosVeiculo.AnoModelo}}</td>
-        <td>{{dadosVeiculo.Combustivel}}</td>
-        <td>{{dadosVeiculo.CodigoFipe}}</td>
-        <td>{{dadosVeiculo.MesReferencia}}</td>
+        <td data-label="Valor">{{dadosVeiculo.Valor}}</td>
+        <td data-label="Marca">{{dadosVeiculo.Marca}}</td>
+        <td data-label="Modelo">{{dadosVeiculo.Modelo}}</td>
+        <td data-label="Ano">{{dadosVeiculo.AnoModelo}}</td>
+        <td data-label="Combustível">{{dadosVeiculo.Combustivel}}</td>
+        <td data-label="Código FIPE">{{dadosVeiculo.CodigoFipe}}</td>
+        <td data-label="Mês Referência">{{dadosVeiculo.MesReferencia}}</td>
       </tr>
     </tbody>
   </table>

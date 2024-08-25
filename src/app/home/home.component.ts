@@ -60,7 +60,6 @@ export class HomeComponent implements OnInit {
 
   buscarDadosVeiculo(ano: string) {
     this.subscription = this.fipeService.getDadosVeiculo(ano).subscribe((data: any) => {
-      console.log(data);
       this.dadosVeiculo = data;
     });
   }
